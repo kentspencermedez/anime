@@ -33,36 +33,11 @@ async function display() {
                         : `<span class="rating"> <i class="bi bi-star-fill" style="color: #FFD700"></i> ${data["data"]["score"]} </span>`
                     }
                     ${
-                      data["data"]["year"] === null
-                        ? ""
-                        : `<span class="year"> ${data["data"]["year"]} </span>`
-                    }
-                    ${
-                      data["data"]["type"] === "Movie"
-                        ? ""
-                        : data["data"]["episodes"] === null
-                        ? ""
-                        : `<span class="episodes"> ${`${
-                            data["data"]["episodes"] > 1
-                              ? `${data["data"]["episodes"]} Episodes`
-                              : `${data["data"]["episodes"]} Episode`
-                          }`}</span>`
-                    }
-                    ${
                       data["data"]["rating"] === null
                         ? ""
                         : `<span class="rating"> ${data["data"]["rating"]}</span>`
                     }
                     <br>
-                    ${
-                      genresList.length === 0
-                        ? ""
-                        : genresList.length > 1
-                        ? `<p class="genres">Genres: ${genresList.join(
-                            ", "
-                          )}</p>`
-                        : `<p class="genres">Genre: ${genresList[0]}</p>`
-                    }
                     ${
                       data["data"]["type"] === null
                         ? ""
@@ -95,10 +70,23 @@ async function display() {
                   ${
                     data["data"]["synopsis"] === null
                       ? ""
-                      : `<div class="description">
+                      : `<div class="description synopsis-section">
                           <dt class="label">Synopsis</dt>
                           <dd class="synopsis">${data["data"]["synopsis"]}</dd>
                          </div>`
+                  }
+                  ${
+                    genresList.length === 0
+                    ? ""
+                    : genresList.length > 1
+                    ? `<div class="description">
+                        <dt class="label">Genres</dt>
+                        <dd>${genresList.join(", ")}</dd>
+                       </div>`
+                    : `<div class="description">
+                        <dt class="label">Genre</dt>
+                        <dd>${genresList[0]}</dd>
+                       </div>`
                   }
                   ${
                     studiosList.length === 0
@@ -125,12 +113,33 @@ async function display() {
                          </div>`
                   }
                   ${
+                    data["data"]["year"] === null
+                    ? ""
+                    : `<div class="description">
+                        <dt class="label">Year</dt>
+                        <dd>${data["data"]["year"]}</dd>
+                      </div>`
+                  }
+                  ${
                     data["data"]["aired"] === null
                       ? ""
                       : `<div class="description">
                           <dt class="label">Aired</dt>
                           <dd>${data["data"]["aired"]["string"]}</dd>
                          </div>`
+                  }
+                  ${
+                    data["data"]["episodes"] === null
+                    ? ""
+                    : data["data"]["episodes"] > 1
+                    ? `<div class="description">
+                        <dt class="label">Episodes</dt>
+                        <dd>${data["data"]["episodes"]}</dd>
+                      </div>`
+                    : `<div class="description">
+                        <dt class="label">Episode</dt>
+                        <dd>${data["data"]["episodes"]}</dd>
+                       </div>`
                   }
                   ${
                     data["data"]["duration"] === null

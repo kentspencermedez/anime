@@ -120,6 +120,21 @@ iframe {
   margin-top: 0.5em;
 }
 
+.synopsis-section {
+  flex-direction: column;
+}
+
+.description.synopsis-section > dt,
+.description.synopsis-section > dd {
+  width: 100%;
+  margin: 0;
+}
+
+/*.synopsis-section dd {
+  border: 1px solid lime;
+  margin: 0;
+}*/
+
 /* .description:first-child {
   margin: 0;
 }
