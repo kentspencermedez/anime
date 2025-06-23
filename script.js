@@ -23,7 +23,7 @@ async function display() {
       main.innerHTML = `
             <section class="head">
                 <img class="poster" src="${
-                  data["data"]["images"]["jpg"]["image_url"]
+                  data["data"]["images"]["jpg"]["large_image_url"]
                 }" />
                 <section class="details">
                     <h1 class="title">${data["data"]["title"]}</h1>
